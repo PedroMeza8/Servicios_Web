@@ -1,7 +1,20 @@
+const e = require('express');
 const express  = require('express');
 const app = express();
+require('dotenv').config()
 
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+// Conexión a Base de datos
+const mongoose = require('mongoose');
+const user = 'usuario_prueba';
+const password = 'Prueba-Servicios';
+const dbname = 'soporte';
+const uri = `mongodb+srv://${user}:${password}@cluster0.opwyd.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log('Base de datos conectada!'))
+    .catch(e => console.log(e))
+
 
 // Motor de plantillas
 
@@ -11,6 +24,7 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 // Rutas Web
 app.use('/', require('./router/RutasWeb'));
+app.use('/servicios', require('./router/Servicios'));
 
 app.use((req, res, next) => {
    res.status(404).render('404', {

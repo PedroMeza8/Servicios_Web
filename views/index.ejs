@@ -1,6 +1,57 @@
-<%- include("template/cabecera", {tituloWeb: 'pagina de Inicio'}) %> 
+<%- include("template/cabecera", {tituloWeb: 'pagina de Inicio' }) %>
 
-    <h1>Titulo de mi sitio Web Index</h1>
-    <h2><%= titulo %> </h2>
+    
 
-<%- include("template/footer") %>     
+    <div class="container mt-3">
+        <div class="row justify-content-md-center" style="height: 150px; overflow:hidden;" >
+            
+            <div class="col-sm">
+                <img src="https://www.unir.net/wp-content/uploads/2014/10/cabecera_prueba_inform.jpg" style="overflow: hidden;" class="img-fluid" alt="...">
+            </div>
+            
+        </div>
+        <div class="row justify-content-md-center">
+            <h1 class="text-center">Titulo de mi sitio Web Index</h1>
+            <div class="col-sm">
+                <h2 class="text-center">
+                    <%= titulo %>
+                </h2>
+            </div>
+            
+        </div>
+        <div class="row mt-3">
+            
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4HBBNxalOGhVjscWrw3lfI81Rj20Jj-CgpA&usqp=CAU"  class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>    
+            <div class="col-sm">
+                  <div class="card" style="width: 18rem;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0RFsOGYhe1EXlfkHGaGU7oTW8-z6kmXaY5g&usqp=CAU" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm">          
+                  <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>  
+            </div>
+            
+        </div>
+        
+    <%- include("template/footer") %>

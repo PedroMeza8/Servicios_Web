@@ -1,4 +1,34 @@
-<%- include("template/cabecera", {tituloWeb: 'pagina de Servicios'}) %> 
+<%- include("template/cabecera", {tituloWeb: 'pagina de Servicios' }) %>
 
-    <h1><%= tituloServicios %> </h1>
-<%- include("template/footer") %>     
+
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (arrayServicios.length> 0) { %>
+                    <% arrayServicios.forEach(servicio=> { %>
+                        <tr>
+                            <th scope="row"><%= servicio.id %> </th>
+                            <td><%= servicio.descripcion %></td>
+                            <td><%= servicio.precio %></td>
+                            <td>@mdo</td>
+                        </tr>
+        
+                    <% }) %>
+        
+                <% } %>
+                
+
+            </tbody>
+        </table>
+
+        
+    </div>
+    <%- include("template/footer") %>
