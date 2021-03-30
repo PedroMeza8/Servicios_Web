@@ -1,5 +1,5 @@
 const e = require('express');
-const express  = require('express');
+const express = require('express');
 const app = express();
 require('dotenv').config()
 
@@ -11,7 +11,7 @@ const user = 'usuario_prueba';
 const password = 'Prueba-Servicios';
 const dbname = 'soporte';
 const uri = `mongodb+srv://${user}:${password}@cluster0.opwyd.mongodb.net/${dbname}?retryWrites=true&w=majority`;
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Base de datos conectada!'))
     .catch(e => console.log(e))
 
@@ -27,10 +27,10 @@ app.use('/', require('./router/RutasWeb'));
 app.use('/servicios', require('./router/Servicios'));
 
 app.use((req, res, next) => {
-   res.status(404).render('404', {
-       titulo: '404',
-       descripcion: 'Titulo del sitio Web'
-   })
+    res.status(404).render('404', {
+        titulo: '404',
+        descripcion: 'Titulo del sitio Web'
+    })
 })
 
 app.listen(port, () => {
