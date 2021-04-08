@@ -1,0 +1,31 @@
+<%- include("template/cabecera", {tituloWeb: 'crear servicio'}) %> 
+
+    <div class="container">
+        <h1>Crear</h1>
+        <form action="/servicios" method="POST">
+            <input 
+                type="text"
+                placeholder="Agregar nombre"
+                class="form-control my-2"
+                name="descripcion"
+            >
+            <input 
+                type="text"
+                placeholder="Agregar descripcion"
+                class="form-control my-2"
+                name="precio"
+            >
+            <div class="d-grid gap-2"> 
+                <button
+                    class="btn btn-success"
+                    type="submit"
+                >
+                Agregar
+                </button>
+            </div>
+        </form>
+        
+
+    </div>
+    
+<%- include("template/footer") %>     
