@@ -42,4 +42,51 @@ router.post('/', async (req,res) =>{
     }
 }
 )
+
+router.get('/:id', async(req,res) =>{
+    const id = req.params.id
+    
+    try {
+        
+        const ServicioDB = await Servicio.findOne({ _id : id})
+        console.log(ServicioDB)
+
+        res.render('detalle', {
+            servicio: ServicioDB,
+            error : false  
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.render('detalle', {
+            error : true,
+            mensaje: 'No se encuentra el id solicitado'  
+        })
+    }
+})
+
+router.delete('/id', async(req,res) =>{
+    console.log("delete inicio")
+    const id = req.params.id
+
+    try {
+        const servicioDB = await Servicio.findByIdAndDelete({_id: id})
+
+        if (servicioDB) {
+            res.json({
+                estado: true,
+                mensaje: 'Eliminado'
+            })
+        }else {
+            res.json({
+                estado: false,
+                mensaje: 'Falló Eliminar'
+            })
+        }
+
+    } catch (error) {
+        console.log(error)
+        
+    }
+})
 module.exports = router;
