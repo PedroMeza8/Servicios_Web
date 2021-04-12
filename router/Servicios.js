@@ -65,7 +65,7 @@ router.get('/:id', async(req,res) =>{
     }
 })
 
-router.delete('/id', async(req,res) =>{
+router.delete('/:id', async(req,res) =>{
     console.log("delete inicio")
     const id = req.params.id
 
