@@ -9,7 +9,7 @@ const Servicio = require('../models/servicio')
 
 
 router.get('/', (req, res) => {
-    res.render('index', {titulo: 'Mi titulo dinamico'})
+    res.render('index', {titulo: 'PM Servicios Informáticos'})
 })
 
 //router.get('/servicios', (req, res) => {

@@ -2,8 +2,8 @@
 
 
     <div class="container">
-        
-        <h1>CRUD Mongo</h1>
+        <div class="row justify-content-md-center mt-2"><div class="col-9">
+        <h3 class="mb-3">Listado de Servicios</h3>
         <div class="d-grid gap-2">
             <a
                 class="btn btn-success"
@@ -15,7 +15,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <!-- <th scope="col">#</th> -->
                     <th scope="col">Descripción</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Acción</th>
@@ -26,9 +26,9 @@
                     
                     <% arrayServicios.forEach(servicio=> { %>
                         <tr>
-                            <th scope="row"><%= servicio.id %> </th>
+                            <!-- <th scope="row"><%= servicio.id %> </th> -->
                             <td><%= servicio.descripcion %></td>
-                            <td><%= servicio.precio %></td>
+                            <td>$<%= servicio.precio %></td>
                             <td>
                                 <a 
                                 href="/servicios/<%= servicio.id %>"
@@ -49,7 +49,7 @@
 
             </tbody>
         </table>
-
+     </div></div>
         
     </div>
     <%- include("template/footer") %>
