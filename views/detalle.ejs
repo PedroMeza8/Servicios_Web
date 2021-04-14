@@ -1,115 +1,99 @@
 <%- include("template/cabecera", {tituloWeb: 'Detalle de servicio' }) %>
 
-    <div class="container">
-        <h1>Detalle servicio</h1>
-        <% if (error) { %>
-            <p>
-                <%= mensaje %>
-            </p>
-            <div class="d-grid gap-2">
-                <a href="/" class="btn btn-dark">Volver a Servicios</a>
-            </div>
-        <% } %>
-                <% if (!error) { %>
+<div class="container">
+  <h1>Detalle servicio</h1>
+  <% if (error) { %>
+  <p><%= mensaje %></p>
+  <div class="d-grid gap-2">
+    <a href="/" class="btn btn-dark">Volver a Servicios</a>
+  </div>
+  <% } %> <% if (!error) { %>
 
-                    <form id="formularioEditar">
-                        <input 
-                            type="text"
-                            class="form-control my-2"
-                            name="descripcion"
-                            value="<%= servicio.descripcion %>"
-                            id="descripcionInput"
-                        >
-                        <input 
-                            type="text"
-                            class="form-control my-2"
-                            name="precio"
-                            value="<%= servicio.precio %>"
-                            id="precioInput"
-                        >
-                        <div class="d-grid gap-2">
-                            <button
-                                class="btn btn-warning"
-                                type="submit"
-                            >
-                            Editar
-                            </button>
-                        </div>
-                    </form>
-                    <hr>
-                    <button 
-                        class="btn btn-danger btn-sm mt-5" 
-                        id="btnEliminar"
-                        data-id="<%= servicio.id %>"
-                        >
-                        Eliminar
-                    </button>    
-
-                    <!-- <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Descripción</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <%= servicio.id %>
-                                </th>
-                                <td>
-                                    <%= servicio.descripcion %>
-                                </td>
-                                <td>
-                                    <%= servicio.precio %>
-                                </td>
-                                <td>
-                                    
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-
-                    <% } %>
+  <form id="formularioEditar" data-id="<%= servicio.id %>">
+    <input
+      type="text"
+      class="form-control my-2"
+      name="descripcion"
+      value="<%= servicio.descripcion %>"
+      id="descripcionInput"
+    />
+    <input
+      type="text"
+      class="form-control my-2"
+      name="precio"
+      value="<%= servicio.precio %>"
+      id="precioInput"
+    />
+    <div class="d-grid gap-2">
+      <button class="btn btn-warning" type="submit">Editar</button>
     </div>
+  </form>
+  <hr />
+  <button
+    class="btn btn-danger btn-sm mt-5"
+    id="btnEliminar"
+    data-id="<%= servicio.id %>"
+  >
+    Eliminar
+  </button>
 
-    <%- include("template/footer") %>
+  <% } %>
+</div>
 
-        <script>
-            const btnEliminar = document.querySelector('#btnEliminar')
+<%- include("template/footer") %>
 
-            btnEliminar.addEventListener('click', async() => {
-                console.log('me diste click')
-                const id = btnEliminar.dataset.id
-                console.log('id', id)
-                try {
-                    const data = await fetch(`/servicios/${id}`, {
-                        method: 'delete'
-                    })
-                    const res = await data.json()
+<script>
+  const btnEliminar = document.querySelector("#btnEliminar");
 
-                    console.log(res)
-                    if (res.estado) {
-                        window.location.href = '/servicios/'
-                    } else {
-                        console.log(res)
-                    }
-                } catch (error) {
-                    console.log(error, 'abcd')
-                }
-            })
+  btnEliminar.addEventListener("click", async () => {
+    console.log("me diste click");
+    const id = btnEliminar.dataset.id;
+    console.log("id", id);
+    try {
+      const data = await fetch(`/servicios/${id}`, {
+        method: "delete",
+      });
+      const res = await data.json();
 
-            const formularioEditar = document.querySelector('#formularioEditar')
+      console.log(res);
+      if (res.estado) {
+        window.location.href = "/servicios/";
+      } else {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error, "abcd");
+    }
+  });
 
-            formularioEditar = addEventListener('submit', (e) =>{
-                e.preventDefault()
-                
-                const descripcion = formularioEditar.elements['descripcion'].value
-                const precio = document.querySelector('#precioInput').value
+  const formularioEditar = document.querySelector("#formularioEditar");
 
-                console.log(descripcion, precio)
-            })
+  formularioEditar = addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const descripcion = document.querySelector("#descripcionInput").value;
+    //const descripcion = formularioEditar.elements['descripcion'].value
+    const precio = document.querySelector("#precioInput").value;
 
-        </script>
+    const id = formularioEditar.dataset.id;
+
+    console.log("holaaaaa", descripcion, precio, id);
+    try {
+      const data = await fetch(`/servicios/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ descripcion, precio }),
+      });
+      const res = await data.json();
+      
+      if (res.estado) {
+        window.location.href = "/servicios/";
+      } else {
+        console.log(res)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+</script>

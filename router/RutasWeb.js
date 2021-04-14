@@ -105,9 +105,12 @@ router.delete('/servicios/:id', async(req,res) =>{
 router.put('/servicios/:id', async(req,res) =>{
     const id = req.params.id
     const body = req.body
-    
     try {
-        const servicioDB = Servicio.findByIdAndUpdate(id, body, { useFindAndModify: false })
+        
+        console.log("!!!")
+        // const servicioDB = await  Servicio.findByIdAndUpdate({_id: id} , {descripcion:body.descripcion, precio: body.precio}, { useFindAndModify: false })
+        const servicioDB = await  Servicio.findByIdAndUpdate(id , body, { useFindAndModify: false })
+
         console.log(servicioDB)
 
         res.json({
