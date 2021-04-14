@@ -11,7 +11,9 @@ const Servicio = require('../models/servicio')
 router.get('/', (req, res) => {
     res.render('index', {titulo: 'PM Servicios Informáticos'})
 })
-
+router.get('/redes', (req, res) => {
+    res.render('redes', {titulo: 'Redes'})
+})
 //router.get('/servicios', (req, res) => {
 //    res.render('servicios', {tituloServicios: 'Este es un mensaje dinamico de Servicios'})
 //})
