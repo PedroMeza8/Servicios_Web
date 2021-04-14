@@ -68,7 +68,7 @@
 
   const formularioEditar = document.querySelector("#formularioEditar");
 
-  formularioEditar = addEventListener("submit", async (e) => {
+  formularioEditar.addEventListener("submit", async (e) => {
     e.preventDefault();
     const descripcion = document.querySelector("#descripcionInput").value;
     //const descripcion = formularioEditar.elements['descripcion'].value
