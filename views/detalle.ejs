@@ -46,16 +46,14 @@
   const btnEliminar = document.querySelector("#btnEliminar");
 
   btnEliminar.addEventListener("click", async () => {
-    console.log("me diste click");
+    //console.log("me diste click");
     const id = btnEliminar.dataset.id;
-    console.log("id", id);
-    try {
+      try {
       const data = await fetch(`/servicios/${id}`, {
         method: "delete",
       });
       const res = await data.json();
-
-      console.log(res);
+      //console.log(res);
       if (res.estado) {
         window.location.href = "/servicios/";
       } else {
@@ -76,7 +74,7 @@
 
     const id = formularioEditar.dataset.id;
 
-    console.log("holaaaaa", descripcion, precio, id);
+    //console.log("holaaaaa", descripcion, precio, id);
     try {
       const data = await fetch(`/servicios/${id}`, {
         method: "PUT",

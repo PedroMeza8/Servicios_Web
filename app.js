@@ -1,13 +1,18 @@
-// const e = require('express');
+//Importacion de librerias
+
 const express = require('express');
 const bodyParser = require('body-parser');
+
+// creacion de Instancia Express
 const app = express();
 
+//Creacion de middeware con bodyparser para acceder al cuerpo de la petición
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+//Importación libreria dotenv para la creacion de variables de entornos
 require('dotenv').config()
 
 const port = process.env.PORT || 3000;
