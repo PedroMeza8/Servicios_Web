@@ -7,13 +7,13 @@
                 type="text"
                 placeholder="usuario"
                 class="form-control my-2"
-                name="usuario"
+                id="usuario"
             >
             <input 
                 type="text"
                 placeholder="password"
                 class="form-control my-2"
-                name="password"
+                id="password"
             >
             <div class="d-grid gap-2"> 
                 <button
@@ -28,4 +28,47 @@
 
     </div>
     
+    <script>
+        const botonEnviar = document.querySelector(".btn-success");
+        const usuario1 = document.querySelector("#usuario");
+        const password1 = document.querySelector("#password");
+        botonEnviar.addEventListener("click", async (nom) => {
+            nom.preventDefault();
+            const usuario= {
+                  "email": usuario1.value,
+                  "password": password1.value
+                }
+            console.log(usuario);
+          try {
+            const data = await fetch('https://jwt-api-1.herokuapp.com/api/user/login', {
+              method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(usuario)
+              })
+              const res = await data.json();
+              //  const usuarioDB = await res.json()
+              console.log(res.data.token)
+            //});
+            //console.log(res);
+            // if (res.error==null) {
+            //   window.location.href = "/login/";
+            // } else {
+            //   console.log(res);
+            // }
+          } catch (error) {
+            console.log(error, "abcd");
+          }
+          // try {
+          //   const data =  await fetch('https://jwt-api-1.herokuapp.com')
+          //   const res = await data.json()
+          //   console.log(res)
+          // } catch (error) {
+      
+          // }
+        });
+      </script>
+
+
 <%- include("template/footer") %>   
