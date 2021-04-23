@@ -16,6 +16,14 @@ router.get("/redes", (req, res) => {
   res.render("redes", { titulo: "Redes" });
 });
 
+router.get("/login", (req, res) => {
+  res.render("login", { titulo: "Iniciar sesión" });
+});
+
+router.get("/register", (req, res) => {
+  res.render("register", { titulo: "Registrarse" });
+});
+
 //Ruteo de CRUD
 router.get("/servicios/", async (req, res) => {
   try {

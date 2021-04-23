@@ -46,7 +46,7 @@
   const btnEliminar = document.querySelector("#btnEliminar");
 
   btnEliminar.addEventListener("click", async () => {
-    //console.log("me diste click");
+    console.log("me diste click");
     const id = btnEliminar.dataset.id;
       try {
       const data = await fetch(`/servicios/${id}`, {
@@ -62,6 +62,14 @@
     } catch (error) {
       console.log(error, "abcd");
     }
+    // try {
+    //   const data =  await fetch('https://jwt-api-1.herokuapp.com')
+    //   const res = await data.json()
+    //   console.log(res)
+    // } catch (error) {
+      
+    // }
+
   });
 
   const formularioEditar = document.querySelector("#formularioEditar");

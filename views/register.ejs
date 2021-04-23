@@ -1,0 +1,81 @@
+<%- include("template/cabecera", {tituloWeb: 'Registrar usuario'}) %>
+
+<div class="container">
+  <h1>Registrarse</h1>
+  <form action="" method="">
+    <input
+      type="text"
+      placeholder="nombre y apellido"
+      class="form-control my-2"
+      id="nombre"
+    />
+    <input
+      type="text"
+      placeholder="email"
+      class="form-control my-2"
+      id="email"
+    />
+    <input
+      type="password"
+      placeholder="password"
+      class="form-control my-2"
+      id="password"
+    />
+    <input
+      type="password"
+      placeholder="confirmación password"
+      class="form-control my-2"
+      id="confirmacion"
+    />
+    <div class="d-grid gap-2">
+      <button class="btn btn-success" type="submit">Agregar</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  const botonEnviar = document.querySelector(".btn-success");
+  const nombre = document.querySelector("#nombre");
+  const email1 = document.querySelector("#email");
+  const password1 = document.querySelector("#password");
+  const confirmacion = document.querySelector("#confirmacion");
+  botonEnviar.addEventListener("click", async (nom) => {
+      nom.preventDefault();
+      const usuario= {
+            "name": nombre.value,
+            "email": email1.value,
+            "password": password1.value
+          }
+      console.log(usuario);
+    try {
+      const data = await fetch('https://jwt-api-1.herokuapp.com/api/user/register', {
+        method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(usuario)
+        })
+        const res = await data.json();
+      //  const usuarioDB = await res.json()
+        console.log(res)
+      //});
+      //console.log(res);
+      if (res.error==null) {
+        window.location.href = "/login/";
+      } else {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error, "abcd");
+    }
+    // try {
+    //   const data =  await fetch('https://jwt-api-1.herokuapp.com')
+    //   const res = await data.json()
+    //   console.log(res)
+    // } catch (error) {
+
+    // }
+  });
+</script>
+
+<%- include("template/footer") %>
