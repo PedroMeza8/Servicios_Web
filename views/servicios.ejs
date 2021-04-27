@@ -6,8 +6,9 @@
         <h3 class="mb-3">Listado de Servicios</h3>
         <div class="d-grid gap-2">
             <a
+                id='crear'
                 class="btn btn-success"
-                href="/servicios/crear"
+                
             >
                 Crear Nuevo Servicio
             </a>
@@ -54,28 +55,34 @@
     </div>
     <%- include("template/footer") %>
 
-    <!-- <script>
-        const btnEliminar = document.querySelector('.btn-danger')
-
-        btnEliminar.addEventListener('click', async() => {
-            // y= btnEliminar.getAttribute('data-id')
-            console.log('me diste click')
-            const id = btnEliminar.dataset.id
-            console.log('id', id)
+    <script>
+    const boton= document.querySelector('#crear')
+       
+           
+    
+    //verificar();
+    boton.addEventListener('click', async() =>{
+        console.log("llego hast aca");
+            const token2 = await localStorage.getItem("token1");
+            console.log(token2);
             try {
-                const data = await fetch(`/servicios/${id}`, {
-                    method: 'delete'
-                })
-                const res = await data.json()
-                
-                console.log(res)
-                if (res.estado) {
-                    window.location.href = '/servicios/'
-                } else {
-                    console.log(res)
-                }
-            } catch (error) {
-                console.log(error, 'abcd')
+                const res = await fetch("https://jwt-api-1.herokuapp.com/api/admin", {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "auth-token": token2,
+                    },
+          });
+          console.log(res, "respuesta verify");
+          //return next();
+        //   if (res.status == 400) {
+            if (res.status !=200) {
+              window.location.href = "/login/";
+            }else{
+                window.location.href = "servicios/crear";
             }
-        })
-    </script> -->
+        } catch (error) {
+            window.location.href = "/login/";
+            console.log("error");
+        }
+    })
+    </script>

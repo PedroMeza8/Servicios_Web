@@ -1,4 +1,5 @@
 const express = require("express");
+const { collection } = require("../models/servicio");
 const router = express.Router();
 
 // Otra forma de importar el router
@@ -37,12 +38,13 @@ router.get("/servicios/", async (req, res) => {
   }
 });
 
+ 
 router.get("/servicios/crear", (req, res) => {
   res.render("crear");
 });
 
 //Crear Servicios
-router.post("/servicios/", async (req, res) => {
+router.post("/guardar/", async (req, res) => {
   const body = req.body;
   try {
     //Otra forma de crear un nuevo registro

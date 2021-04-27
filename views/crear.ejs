@@ -1,31 +1,50 @@
-<%- include("template/cabecera", {tituloWeb: 'crear servicio'}) %> 
+<%- include("template/cabecera", {tituloWeb: 'crear servicio'}) %>
 
-    <div class="container">
-        <h1>Crear</h1>
-        <form action="/servicios" method="POST">
-            <input 
-                type="text"
-                placeholder="Agregar nombre"
-                class="form-control my-2"
-                name="descripcion"
-            >
-            <input 
-                type="text"
-                placeholder="Agregar descripcion"
-                class="form-control my-2"
-                name="precio"
-            >
-            <div class="d-grid gap-2"> 
-                <button
-                    class="btn btn-success"
-                    type="submit"
-                >
-                Agregar
-                </button>
-            </div>
-        </form>
-        
-
+<div class="container">
+  <h1>Crear</h1>
+  <form action="/guardar" method="POST">
+    <input
+      type="text"
+      placeholder="Agregar nombre"
+      class="form-control my-2"
+      name="descripcion"
+    />
+    <input
+      type="text"
+      placeholder="Agregar descripcion"
+      class="form-control my-2"
+      name="precio"
+    />
+    <div class="d-grid gap-2">
+      <button class="btn btn-success" type="submit">Agregar</button>
     </div>
-    
-<%- include("template/footer") %>     
+  </form>
+</div>
+
+<script>
+//     async function verificar() {
+//         console.log("llego hast aca");
+//         const token2 = await localStorage.getItem("token1");
+//         console.log(token2);
+//         try {
+//             const res = await fetch("https://jwt-api-1.herokuapp.com/api/admin", {
+//                 headers: {
+//                     "Content-Type": "application/json",
+//                     "auth-token": token2,
+//                 },
+//       });
+//       console.log(res, "respuesta verify");
+//       //return next();
+//       if (res.status == 400) {
+//           window.location.href = "/login/";
+//         }
+//     } catch (error) {
+//         window.location.href = "/login/";
+//         console.log("error");
+//     }
+// }
+//verificar();
+//document.addEventListener('unload', verificar)
+</script>
+
+<%- include("template/footer") %>
